@@ -2,7 +2,7 @@ import SpriteKit
 
 public class Chessboard : SKSpriteNode {
     // MARK: - Chessboard Items
-    private var _possibleMovesHighlights : [SKShapeNode] = []
+    private var _possibleMovesHighlights : [Position : SKShapeNode] = [:]
     private var _endPositionHighlight : SKShapeNode?
     
     public let tiles : [[Tile]]
@@ -60,6 +60,24 @@ public class Chessboard : SKSpriteNode {
     }
     
     // MARK: - Highlights Animations
+    // MARK: * Hint Move
+    public func animateHintForPosition(_ position: Position) {
+        let actions : [SKAction] = [SKAction.fadeAlpha(to: 0, duration: 0.5),
+                                    SKAction.wait(forDuration: 1),
+                                    SKAction.fadeAlpha(to: 0.1, duration: 0.5)]
+        let actionsForHint : [SKAction] = [SKAction.fadeAlpha(to: 0.3, duration: 0.5),
+                                           SKAction.wait(forDuration: 1),
+                                           SKAction.fadeAlpha(to: 0.1, duration: 0.5)]
+        
+        for (hPosition, highlight) in _possibleMovesHighlights {
+            if hPosition != position {
+                highlight.run(SKAction.sequence(actions))
+            } else {
+                highlight.run(SKAction.sequence(actionsForHint))
+            }
+        }
+    }
+    
     // MARK: * Possible Moves
     public func addPossibleMovesHighlights(positions: [Position]) {
         for p in positions where !p.isCorner {
@@ -68,8 +86,9 @@ public class Chessboard : SKSpriteNode {
             shape.fillColor = UIColor.green
             shape.alpha = 0
             
-            _possibleMovesHighlights.append(shape)
             self[p].addChild(shape)
+            
+            _possibleMovesHighlights[p] = shape
             
             shape.removeAllActions()
             shape.run(SKAction.fadeAlpha(to: 0.1, duration: 0.5))
@@ -77,13 +96,13 @@ public class Chessboard : SKSpriteNode {
     }
     
     public func removePossibleMovesHighlights() {
-        for p in _possibleMovesHighlights {
-            p.removeAllActions()
-            p.run(SKAction.fadeOut(withDuration: 0.5), completion: {
-                p.removeFromParent()
+        for highlight in _possibleMovesHighlights.values {
+            highlight.removeAllActions()
+            highlight.run(SKAction.fadeOut(withDuration: 0.5), completion: {
+                highlight.removeFromParent()
             })
         }
-        _possibleMovesHighlights = []
+        _possibleMovesHighlights.removeAll()
     }
     
     // MARK: * Destination Highlight
@@ -98,7 +117,7 @@ public class Chessboard : SKSpriteNode {
         self[position].addChild(shape)
         
         shape.removeAllActions()
-        shape.run(SKAction.fadeAlpha(to: 0.1, duration: 0.5))
+        shape.run(SKAction.fadeAlpha(to: 0.2, duration: 0.5))
     }
     
     public func removeDestinationHighlight() {

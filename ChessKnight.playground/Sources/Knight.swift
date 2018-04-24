@@ -190,6 +190,7 @@ public class Knight : SKSpriteNode {
                 while let pos = p {
                     path.append(pos)
                     p = pos.previousPosition
+                    pos.previousPosition = nil
                 }
                 
                 path.reverse()

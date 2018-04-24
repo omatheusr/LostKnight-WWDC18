@@ -153,7 +153,7 @@ public class Menu : SKSpriteNode {
                                     position: Menu.buttonPlayStopPosition)
         buttonForward = MenuButton(icon: Resources.Image.iconForward,
                                    position: Menu.buttonForwardPosition)
-        buttonHint = MenuButton(icon: Resources.Image.iconInfo,
+        buttonHint = MenuButton(icon: Resources.Image.iconHint,
                                 position: Menu.buttonHintPosition)
         
         

@@ -66,14 +66,14 @@ public class Resources {
         case iconPlay       = "icon_play"
         case iconStop       = "icon_stop"
         case iconForward    = "icon_forward"
-        case iconInfo       = "icon_info"
+        case iconHint       = "icon_hint"
         case iconReplay     = "icon_replay"
         
         case knight1 = "knight_1"
         
         private func getImageName() -> String {
             switch self {
-            case .iconPlay, .iconStop, .iconForward, .iconInfo, .iconReplay:
+            case .iconPlay, .iconStop, .iconForward, .iconHint, .iconReplay:
                 return "Images/Icons/\(self.rawValue)"
             case .tileCorner1, .tileCorner2, .tileCorner3, .tileCorner4, .tileSide1, .tileSide2, .tileGroundDark, .tileGroundLight:
                 return "Images/Tiles/\(self.rawValue)"

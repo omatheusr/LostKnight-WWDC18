@@ -1,12 +1,22 @@
 /*:
  
- # BFS Algorithm commented line by line
-
- - - -
+ # BFS to help the Knight
  
  ![BFS Demo](Images/Util/bfs_demo2.png)
 
+ The BFS algorithm is used in the *Lost Knight* game in 2 different ways:
+ 
+ 1. _to find the path for the Knight to reach his destination;_
+ 2. _to count the amount of moves needed for the Knight to reach his destination._
+ 
+ These informations are calculated everytime a change happens in the game. By doing that the game is constantly checking the status of the player.
+ 
  - - -
+ 
+ # BFS Algorithm commented line by line
+ * Note:
+ _* The BFS function below is the same used in the game._
+ 
  */
 import Foundation
 
@@ -34,6 +44,7 @@ func BFS(origin: Position, destination: Position) -> [Position] {
             while let pos = p {
                 path.append(pos)
                 p = pos.previousPosition
+                pos.previousPosition = nil
             }
             
             // Reverse the path to show it from Origin to Destination
@@ -69,18 +80,26 @@ func BFS(origin: Position, destination: Position) -> [Position] {
 }
 /*:
  
+ - - -
+ 
+ # Run the BFS function
+ 
  ![BFS Demo](Images/Util/bfs_demo.gif)
  
  */
-let originPosition = Position(row: 8, column: 1)
-let destinationPosition = Position(row: 1, column: 8)
+let originPosition = Position(row: 8, column: 1)        // H1
+let destinationPosition = Position(row: 1, column: 8)   // A8
 
+// Find the path between H1 and A8
 let path = BFS(origin: originPosition, destination: destinationPosition)
 
 for (i, position) in path.enumerated() {
     print("\(i) -> \(position.rcIdentifier)")
 }
 /*:
+ - - -
+ 
+ * Important:
  For more information, see [Breadth-First Search on Wikipedia](https://en.wikipedia.org/wiki/Breadth-first_search)
  
  [◀︎ Go back to the game](@previous)

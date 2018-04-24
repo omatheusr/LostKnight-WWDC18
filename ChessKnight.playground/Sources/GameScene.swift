@@ -114,6 +114,12 @@ extension GameScene : MenuDelegate {
         case .iconForward:
             guard let gameplay = gameplay else { return }
             gameplay.state = .autosolving
+            
+        case .iconHint:
+            guard let gameplay = gameplay else { return }
+            let path = Knight.BFS(origin: knight.currentPosition, destination: gameplay.destinationPosition)
+            if path.count < 2 { return }
+            board.animateHintForPosition(path[1])
         default: break
         }
     }

@@ -41,7 +41,7 @@ public class Gameplay {
             // Update status according to position (Won/Failed)
             if currentPosition == destinationPosition {
                 state = .won
-            } else if currentPosition != destinationPosition && (_positions.count > maxMoves || neededMoves > (maxMoves-_positions.count)) {
+            } else if currentPosition != destinationPosition && (_positions.count > maxMoves || neededMoves > (maxMoves-(_positions.count-1))) {
                 state = .failed
             }
         }

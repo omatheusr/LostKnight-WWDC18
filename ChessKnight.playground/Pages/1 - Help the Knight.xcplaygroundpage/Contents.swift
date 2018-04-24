@@ -1,4 +1,5 @@
 /*:
+ 
  # Lost Knight
 
 _This playground was created to show the usage of the Breadth-first search algorithm (BFS) to solve the Chess Knight problem._
@@ -10,34 +11,12 @@ _This playground was created to show the usage of the Breadth-first search algor
 
  - - -
  
- * Callout(1. Chess Knight:):
- \
- The Knight is a piece of the chess game that is very limited in movements. It can only move to a square that is two squares away horizontally and one square vertically, or two squares vertically and one square horizontally. The complete move therefore looks like the letter L.
- \
- ![Knight Moves](Images/Util/knight_moves.png)
-\
- For more information, see [Knight (chess) on Wikipedia](https://en.wikipedia.org/wiki/Knight_(chess))
+ * Callout(The Knight Problem:):
+ **What's the shortest path for a Knight to get from a given source position to a given target position in a chessboard?**
  
  - - -
  
- * Callout(2. The BFS Algorithm:):
- The Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. It starts at the tree root (or some arbitrary node of a graph) and explores the neighbor nodes first, before moving to the next level neighbours.
- \
- ![Knight Moves](Images/Util/Animated_BFS.gif)
- \
- For more information, see [Breadth-First Search on Wikipedia](https://en.wikipedia.org/wiki/Breadth-first_search)
- \
- Also, give a look at the [Next Page](@next) of this Playground to see the BFS algorithm used in this game commented line by line.
- 
- - - -
- 
- * Callout(3. The Knight Problem:):
- Knowing that the Knight can only move in certain ways in a chessboard,
- **what's the shortest path for a Knight to get from a given source position to a given target position?**
- 
- - - -
- 
- - Note:
+ * Note:
  ![Play](Images/Icons/icon_play.png) Play
  \
  You can play the game and try to find the path that the Knight needs to take to get to his destination by yourself.
@@ -48,7 +27,7 @@ _This playground was created to show the usage of the Breadth-first search algor
  \
  _* note that to use this option you need to start the game by pressing the play button first._
  \
- ![The real head of the household?](Images/Icons/icon_info.png) Hint
+ ![The real head of the household?](Images/Icons/icon_hint.png) Hint
  \
  If you're trying to help the Knight by yourself use this button to get a hint on where the knight should go next.
  
@@ -56,10 +35,29 @@ _This playground was created to show the usage of the Breadth-first search algor
  2. The red highlighted square in the chessboard show the Knight destination;
  3. You will lose the game if:
     - you perform the maximum amount of steps allowed and you do not reach the destination;
-    - you run out of steps needed to reach the destination from your current position.
+    - your amount of moves left are less than the amount of moves needed to reach the destination from your current position.
+
+ - - -
+ 
+ * Callout(1. Chess Knight Movements:):
+ \
+ The Knight is a piece of the chess game that can only move to a square that is two squares away horizontally and one square vertically, or two squares vertically and one square horizontally. 
+ \
+ ![Knight Moves](Images/Util/knight_moves.png)
+\
+ For more information, see [Knight (chess) on Wikipedia](https://en.wikipedia.org/wiki/Knight_(chess))
+ 
+ - - -
+ 
+ * Callout(2. The BFS Algorithm:):
+ The Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. It starts at the tree root (or some arbitrary node of a graph) and explores the neighbor nodes first, before moving to the next level neighbours.
+ \
+ ![Knight Moves](Images/Util/bfs_animated.gif)
+ \
+ For more information, see [Breadth-First Search on Wikipedia](https://en.wikipedia.org/wiki/Breadth-first_search)
+ \
+ Also, give a look at the [Next Page](@next) of this Playground to see the BFS algorithm used in this game commented line by line.
  */
-
-
 /*:
  # Start the game:
  - - -
